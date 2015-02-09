@@ -6,9 +6,7 @@ angular.module("weather-widget",[])
         restrict: "E",
         scope: {
 
-            /*nt: @ -> this gives the exact thing to pass through on the html side.
-            The '=' -> equal sign evalutes whats inside the parenthesis like if it was code
-            to be executed.*/
+
 
             location: "@"
         },
@@ -18,16 +16,15 @@ angular.module("weather-widget",[])
                 params: {
                     q: $scope.location,
 
-                    units: "imperial" //nt: converts units from metric system.
+                    units: "imperial"
                 }
             }
 
 
             $http(req).success(function(data){
-                // console.log(data);
-                // console.log(data.weather[0].description)
+
                 $scope.weather = data.weather[0].description;
-                // $scope.temp = Math.round(((data.main.temp - 273.15) * 1.8000) + 32)
+
                 $scope.temp = data.main.temp;
 
             });
